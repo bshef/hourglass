@@ -22,7 +22,7 @@ var vertices = [
 //
 
 //	Draws the hourglass
-function drawHourGlass() {
+function drawHourGlass(topGrains, bottomGrains) {
 	var canvas = document.getElementById('canvas');
 	if(!canvas) {
 		return;
@@ -38,12 +38,15 @@ function drawHourGlass() {
 	drawHourGlassShape(ctx);
 
 	// Draw TOP sand grains
-	for(var t = 0; t < getNumberOfGrains('top'); t++) {
+	var numberOfTopGrains = topGrains ? topGrains : getNumberOfGrains('top');
+	var numberOfBottomGrains = bottomGrains ? bottomGrains : getNumberOfGrains('bottom');
+
+	for(var t = 0; t < numberOfTopGrains; t++) {
 		drawUpperSandGrain(ctx);
 	}
 
 	// Draw BOTTOM sand grains
-	for(var b = 0; b < getNumberOfGrains('bottom'); b++) {
+	for(var b = 0; b < numberOfBottomGrains; b++) {
 		drawLowerSandGrain(ctx);
 	}
 }
