@@ -1,6 +1,9 @@
 # Hourglass
 A simple hourglass widget for websites
 
+## View live demo
+http://bshef.github.io/hourglass/public/index.html
+
 ## How to view the demo
 1. Download the ZIP of this project or clone the Git repo
 2. The `hourglass` directory should contain two directories: `public` and `src`
