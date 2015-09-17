@@ -1,5 +1,8 @@
 // Variables and Constants
 
+//	Global animation reference
+var animation;
+
 //	Colors
 var deepPurple = '#673AB7';
 var amber = '#FFC107';
@@ -49,6 +52,75 @@ function drawHourGlass(topGrains, bottomGrains) {
 	for(var b = 0; b < numberOfBottomGrains; b++) {
 		drawLowerSandGrain(ctx);
 	}
+}
+
+function setButtonEnabled(id, enabled) {
+	var button = document.getElementById(id);
+	if(button) {
+		button.disabled = !enabled;
+	}
+}
+
+function animateHourGlass() {
+	stopAnimation();
+
+	//	Enable stop button, disable start button
+	setButtonEnabled('stop', true);
+	setButtonEnabled('start', false);
+
+	var topGrains = 1024;
+	var bottomGrains = 0;
+	animation = window.setInterval(function() {		
+		if(topGrains > 0) {
+			drawHourGlass(--topGrains, ++bottomGrains);
+			updateCountdown(topGrains, bottomGrains);
+		} else {
+			stopAnimation();
+			return;
+		}
+	}, 1000 / (topGrains / 120));
+}
+
+function updateCountdown(topGrains, bottomGrains) {
+	var clock = document.getElementById('countdown');
+	if(clock) {
+		if(topGrains > 0) {
+			clock.innerHTML = topGrains + ' grains up top / ' + bottomGrains + ' grains in bottom';
+		} else {
+			clock.innerHTML = 'View a sample animation (does not use user-specified values for number of grains)';
+		}
+	}
+}
+
+//	Stops the animation immediately.
+function stopAnimation() {
+	//	Stop animation
+	window.clearInterval(animation);
+	//	Reset countdown
+	updateCountdown(0, 0);
+	//	Disable stop button, enable start button
+	setButtonEnabled('stop', false);
+	setButtonEnabled('start', true);
+}
+
+//	Reset page to defaults
+function reset() {
+	stopAnimation();
+
+	//	Reset input fields
+	var defaultGrains = 512;
+	var topGrains = document.getElementById('topGrains');
+	if(topGrains) {
+		topGrains.value = defaultGrains;
+	}
+
+	var bottomGrains = document.getElementById('bottomGrains');
+	if(bottomGrains) {
+		bottomGrains.value = defaultGrains;
+	}
+
+	//	Draw hourglass
+	drawHourGlass();
 }
 
 //	Draws a simple hourglass shape
