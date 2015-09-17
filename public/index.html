@@ -39,8 +39,17 @@
 
 					<div class="mdl-grid" >
 						<div class="mdl-cell mdl-cell--6-col">
-							<canvas id="canvas" height="600px" width="600px" style="border:0px solid #673AB7;">
-							</canvas>
+							<canvas id="canvas" height="600px" width="600px" style="border:0px solid #673AB7;"></canvas>
+
+							<h6 id="countdown">View a sample animation (does not use user-specified values for number of grains)</h6>					
+
+							<button id="start" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" onclick="animateHourGlass();">
+								<strong>Animate Hourglass</strong>
+							</button>
+
+							<button id="stop" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" disabled="true" onclick="reset();">
+								<strong>Stop Animation</strong>
+							</button>							
 						</div>
 						<div class="mdl-cell mdl-cell--6-col">
 							<h6>Number of grains ... </h6>
