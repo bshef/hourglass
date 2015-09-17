@@ -6,7 +6,7 @@ A simple hourglass widget for websites
 2. The `hourglass` directory should contain two directories: `public` and `src`
 3. In a modern browser (ie, Chrome) navigate to `...\hourglass\public\index.html` on your local machine
 
-## Using the dmeo
+## Using the demo
 1. Simply specify the number of grains to draw in the top and bottom using the text fields on the left
 2. Press the 'draw' button to redraw the hourglass with the specified number of grains as many times as you like
 
